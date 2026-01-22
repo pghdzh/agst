@@ -1,633 +1,574 @@
 <template>
   <main class="home">
-    <canvas ref="canvasEl" class="rose-canvas" aria-hidden="true"></canvas>
+    <!-- 动态粒子背景层：模拟电光与余烬 -->
+    <canvas ref="canvasEl" class="particle-canvas" aria-hidden="true"></canvas>
 
-    <!-- 背景轮播（两组用于桌面/移动不同裁切） -->
-    <div class="carousel carousel1" aria-hidden="true">
-      <img
-        v-for="(src, idx) in randomFive"
-        :key="idx"
-        :src="src"
-        class="carousel-image"
-        :class="{ active: idx === currentIndex }"
-      />
-    </div>
-    <div class="carousel carousel2" aria-hidden="true">
-      <img
-        v-for="(src, idx) in randomFive2"
-        :key="idx"
-        :src="src"
-        class="carousel-image"
-        :class="{ active: idx === currentIndex }"
-      />
-    </div>
+    <!-- 静态风格背景层：深空与渐变光晕 -->
+    <div class="background-layer" aria-hidden="true"></div>
 
+    <!-- 主内容区域 -->
     <section class="center" role="main">
-      <h1 class="title">如果骄阳落下，那就让我来成为新的灼阳 · 奥古斯塔</h1>
+      <!-- 角色徽记与装饰线 -->
+      <div class="heraldry">
+        <div class="heraldry-line left"></div>
+        <div class="heraldry-icon" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <!-- 简约的剑与冠冕组合图形 -->
+            <path
+              d="M50,15 L60,40 L75,45 L60,50 L65,70 L50,60 L35,70 L40,50 L25,45 L40,40 Z"
+            />
+            <circle cx="50" cy="85" r="8" />
+          </svg>
+        </div>
+        <div class="heraldry-line right"></div>
+      </div>
 
-      <div class="subtitle" aria-live="polite">
-        <span class="typed">{{ typed }}</span
-        ><span class="cursor" aria-hidden="true"></span>
+      <!-- 主标题与角色头衔 -->
+      <div class="title-container">
+        <h1 class="title-main">奥古斯塔</h1>
+        <p class="title-sub">AUGUSTA · 七丘的无畏总督</p>
+      </div>
+
+      <!-- 动态角色语录 -->
+      <div class="quote-container">
+        <p class="quote-main" >“如果骄阳落下，那就让我来成为新的灼阳”</p>
+        <div class="quote-typed">
+          <span class="typed-text">{{ typedText }}</span>
+          <span class="cursor" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <!-- 能力标签 -->
+      <div class="ability-tags">
+        <span class="tag" v-for="tag in abilityTags" :key="tag">{{ tag }}</span>
       </div>
     </section>
 
-    <footer
-      class="shore-footer-simple"
-      role="contentinfo"
-      aria-label="页面页脚"
-    >
-      <div class="inner container">
-        <div class="center">
-          <div class="slogan">愿我流血时，仍不忘为何而举剑</div>
-          <div class="meta">
-            © <span>{{ year }}</span> 奥古斯塔电子设定集 · 制作：霜落天亦
-          </div>
-        </div>
+    <!-- 页脚 -->
+    <footer class="augusta-footer" role="contentinfo">
+      <div class="footer-content">
+        <p class="footer-quote">愿我流血时，仍不忘为何而举剑</p>
+        <p class="footer-meta">© {{ currentYear }} 奥古斯塔电子设定集 · 霜落天亦</p>
       </div>
+      <!-- 装饰性页脚边框 -->
+      <div class="footer-border"></div>
     </footer>
   </main>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import violet from "@/assets/violet.png"; // 若希望更贴合风格，可替换为“贝壳/羽毛/萤光点”贴图
-const year = new Date().getFullYear();
-const canvasEl = ref<HTMLCanvasElement | null>(null);
-let ctx: CanvasRenderingContext2D;
-let animationId = 0;
-let lastTime = 0;
-let elapsed = 0;
 
-interface Rose {
-  baseX: number;
-  y: number;
-  size: number;
-  speed: number;
-  swayAmp: number;
-  swayFreq: number;
-  phase: number;
-  angle: number;
-  angularSpeed: number;
-}
+// ==================== 基础数据 ====================
+const currentYear = new Date().getFullYear();
 
-const roses: Rose[] = [];
-const ROSE_COUNT_DESKTOP = 18;
-const ROSE_COUNT_MOBILE = 6;
-const ROSE_IMG = new Image();
-ROSE_IMG.src = violet;
+// 奥古斯塔能力与语录 (整合自搜索结果)
+const abilityTags = ref([
+  "未曜的磁律",
+  "灼金电光",
+  "双形态武器",
+  "万剑状态",
+  "七丘总督",
+]);
 
-function initRoses(count: number) {
-  roses.length = 0;
-  const canvas = canvasEl.value!;
-  const w = canvas.width / (window.devicePixelRatio || 1);
-  const h = canvas.height / (window.devicePixelRatio || 1);
-
-  for (let i = 0; i < count; i++) {
-    const baseX = Math.random() * w;
-    roses.push({
-      baseX,
-      y: Math.random() * -h,
-      size: 28 + Math.random() * 48, // 稍微精简尺寸
-      speed: 12 + Math.random() * 36, // 速度更缓
-      swayAmp: 12 + Math.random() * 26,
-      swayFreq: 0.15 + Math.random() * 0.7,
-      phase: Math.random() * Math.PI * 2,
-      angle: Math.random() * Math.PI * 2,
-      angularSpeed: (Math.random() - 0.5) * 1.2,
-    });
-  }
-  elapsed = 0;
-}
-
-let resizeTimeout: number;
-function resizeCanvas() {
-  window.clearTimeout(resizeTimeout);
-  resizeTimeout = window.setTimeout(() => {
-    cancelAnimationFrame(animationId);
-    const canvas = canvasEl.value!;
-    const parent = canvas.parentElement!;
-    const dpr = window.devicePixelRatio || 1;
-    const w = parent.clientWidth;
-    const h = Math.max(parent.clientHeight, 420); // 给个最小高度，避免太窄时粒子不明显
-
-    canvas.style.width = w + "px";
-    canvas.style.height = h + "px";
-    canvas.width = w * dpr;
-    canvas.height = h * dpr;
-
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.scale(dpr, dpr);
-
-    const isMobile = w < 768;
-    initRoses(isMobile ? ROSE_COUNT_MOBILE : ROSE_COUNT_DESKTOP);
-    lastTime = 0;
-    animationId = requestAnimationFrame(tickCanvas);
-  }, 160);
-}
-
-function tickCanvas(now: number) {
-  if (!lastTime) lastTime = now;
-  const dt = (now - lastTime) / 1000;
-  lastTime = now;
-  elapsed += dt;
-
-  const canvas = canvasEl.value!;
-  const w = canvas.clientWidth;
-  const h = canvas.clientHeight;
-
-  ctx.clearRect(0, 0, w, h);
-
-  // 轻微整体雾层，增强深度（透明度低，避免影响可读性）
-  ctx.fillStyle = "rgba(2,8,14,0.08)";
-  ctx.fillRect(0, 0, w, h);
-
-  roses.forEach((r) => {
-    r.y += r.speed * dt;
-    const sway = r.swayAmp * Math.sin(r.phase + elapsed * r.swayFreq);
-    const x = r.baseX + sway;
-    r.angle += r.angularSpeed * dt;
-
-    if (r.y > h + r.size) {
-      r.y = -r.size * 0.6;
-      r.baseX = Math.random() * w;
-      r.phase = Math.random() * Math.PI * 2;
-    }
-
-    if (x > w + r.size || x < -r.size) return;
-
-    // 计算透明度：越远看上去越淡
-    const alpha = Math.max(0, Math.min(1, 1 - (r.y / h) * 0.6));
-
-    ctx.save();
-    ctx.globalAlpha = alpha;
-    ctx.translate(x, r.y);
-    ctx.rotate(r.angle);
-
-    if (ROSE_IMG && ROSE_IMG.complete && ROSE_IMG.naturalWidth > 0) {
-      // 使用图片绘制，但加上一层冷色调叠加（globalCompositeOperation 简单处理）
-      ctx.drawImage(ROSE_IMG, -r.size / 2, -r.size / 2, r.size, r.size);
-
-      // 轻微冷光叠加，提升风格一致性
-      ctx.globalCompositeOperation = "lighter";
-      const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, r.size);
-      grad.addColorStop(0, `rgba(79,233,223,${0.08 * alpha})`);
-      grad.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = grad;
-      ctx.fillRect(-r.size / 2, -r.size / 2, r.size, r.size);
-      ctx.globalCompositeOperation = "source-over";
-    }
-
-    ctx.restore();
-  });
-
-  animationId = requestAnimationFrame(tickCanvas);
-}
-
-// ========== 打字机文案 ==========
-// 适合奥古斯塔风格的副标题（偏长句，已为打字器准备）
-const lines = [
+const quotes = [
   "宿命的囚笼，由我斩断",
   "从铁砧到冠冕，见证凡人的史诗",
   "七丘之上，以剑立誓的守望",
   "承载众生之愿，方知冠冕之重",
   "法比亚纳的余烬中，信念永不熄灭",
-  "每一柄剑都承载着一个誓言",
-  "在淬火中重生的不只是钢铁",
-  "铁匠的女儿，七丘的守护者",
-  "愿流血的时刻，仍记得为何举剑",
-  "以凡铁之躯，承千钧之重",
-  "炉火不熄，守望不止",
-  "从橡果到参天，从平凡到传奇",
-  "我的剑，为无法挥剑之人而战",
-  "锻造命运的铁砧就在心中",
+  "锻造命运的铁砧就在心中", // 结合其“铁与血”的背景
   "黑潮终将退去，黎明必将到来",
-  "铁与火之歌，誓与剑之诗",
-  "背负过去，直面未来",
-  "每一道伤痕都是成长的印记",
-  "守护，是最沉重的冠冕",
-  "在平凡中铸就非凡",
-  "七丘城的每一块砖石都是誓言",
+  "我的剑，为无法挥剑之人而战",
 ];
 
-const typed = ref("");
-let lineIndex = 0;
+// ==================== 动态打字机效果 ====================
+const typedText = ref("");
+let quoteIndex = 0;
 let charIndex = 0;
-let deleting = false;
-let timer: number | null = null;
+let isDeleting = false;
+let typingTimer: number | null = null;
 
-const TYPING = 120;
-const DELETING = 40;
-const PAUSE = 1200;
+const TYPE_SPEED = 120; // 打字速度（毫秒）
+const DELETE_SPEED = 60; // 删除速度（毫秒）
+const PAUSE_DURATION = 1800; // 暂停时间（毫秒）
 
-function tick() {
-  const cur = lines[lineIndex];
-  if (!deleting) {
-    typed.value = cur.slice(0, charIndex + 1);
+function typeWriter() {
+  const currentQuote = quotes[quoteIndex];
+
+  if (!isDeleting) {
+    // 打字模式
+    typedText.value = currentQuote.slice(0, charIndex + 1);
     charIndex++;
-    if (charIndex >= cur.length) {
-      timer = window.setTimeout(() => {
-        deleting = true;
-        tick();
-      }, PAUSE);
+
+    if (charIndex >= currentQuote.length) {
+      // 打字完成，暂停后开始删除
+      isDeleting = true;
+      typingTimer = window.setTimeout(typeWriter, PAUSE_DURATION);
       return;
     }
-    timer = window.setTimeout(tick, TYPING);
+    typingTimer = window.setTimeout(typeWriter, TYPE_SPEED);
   } else {
-    typed.value = cur.slice(0, charIndex - 1);
+    // 删除模式
+    typedText.value = currentQuote.slice(0, charIndex - 1);
     charIndex--;
+
     if (charIndex <= 0) {
-      deleting = false;
-      lineIndex = (lineIndex + 1) % lines.length;
-      timer = window.setTimeout(tick, 360);
+      // 删除完成，切换到下一句
+      isDeleting = false;
+      quoteIndex = (quoteIndex + 1) % quotes.length;
+      typingTimer = window.setTimeout(typeWriter, 300);
       return;
     }
-    timer = window.setTimeout(tick, DELETING);
+    typingTimer = window.setTimeout(typeWriter, DELETE_SPEED);
   }
 }
 
-// ========== 背景图片导入与轮播 ==========
-const modules = import.meta.glob("@/assets/images1/*.{jpg,png,jpeg,webp}", {
-  eager: true,
-});
-const allSrcs: string[] = Object.values(modules).map((mod: any) => mod.default);
+// ==================== 动态粒子背景 ====================
+const canvasEl = ref<HTMLCanvasElement | null>(null);
+let animationId = 0;
+let lastTime = 0;
+let canvasCtx: CanvasRenderingContext2D;
 
-const modules2 = import.meta.glob("@/assets/images2/*.{jpg,png,jpeg,webp}", {
-  eager: true,
-});
-const allSrcs2: string[] = Object.values(modules2).map(
-  (mod: any) => mod.default
-);
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
+interface Particle {
+  x: number;
+  y: number;
+  size: number;
+  speedX: number;
+  speedY: number;
+  color: string;
+  life: number; // 生命周期 0.0 - 1.0
+  decay: number; // 衰减速度
 }
-const randomFive = ref<string[]>(shuffle(allSrcs).slice(0, 5));
-const randomFive2 = ref<string[]>(shuffle(allSrcs2).slice(0, 5));
 
-const currentIndex = ref(0);
-let Imgtimer: number | undefined;
+const particles: Particle[] = [];
+const PARTICLE_COUNT_DESKTOP = 65; // 桌面端粒子数
+const PARTICLE_COUNT_MOBILE = 25; // 移动端粒子数
+const PARTICLE_COLORS = [
+  "rgba(198, 72, 48, 0.7)", // 主色暗紫/赤金
+  "rgba(255, 212, 96, 0.8)", // 灼金电光高光
+  "rgba(139, 0, 26, 0.5)", // 深红血光
+  "rgba(255, 255, 220, 0.9)", // 炽白烈阳核心
+];
 
+function initParticles(count: number) {
+  particles.length = 0;
+  if (!canvasEl.value) return;
+
+  const width = canvasEl.value.clientWidth;
+  const height = canvasEl.value.clientHeight;
+
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 4 + 1.5,
+      speedX: (Math.random() - 0.5) * 0.8,
+      speedY: (Math.random() - 0.7) * 1.2, // 略微向上漂浮
+      color:
+        PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)],
+      life: Math.random() * 0.5 + 0.5, // 初始生命值
+      decay: Math.random() * 0.008 + 0.004,
+    });
+  }
+}
+
+function tickParticles(timestamp: number) {
+  if (!lastTime) lastTime = timestamp;
+  const deltaTime = (timestamp - lastTime) / 1000;
+  lastTime = timestamp;
+
+  if (!canvasEl.value || !canvasCtx) return;
+  const width = canvasEl.value.clientWidth;
+  const height = canvasEl.value.clientHeight;
+
+  // 半透明黑色覆盖层，制造粒子拖尾效果
+  canvasCtx.fillStyle = "rgba(6, 4, 8, 0.05)";
+  canvasCtx.fillRect(0, 0, width, height);
+
+  particles.forEach((p) => {
+    // 更新位置与生命周期
+    p.x += p.speedX;
+    p.y += p.speedY;
+    p.life -= p.decay;
+
+    // 粒子重置条件：移出视窗或生命结束
+    if (p.life <= 0 || p.y < -10 || p.x < -10 || p.x > width + 10) {
+      p.x = Math.random() * width;
+      p.y = height + 5; // 从底部重生
+      p.life = 1.0;
+      p.speedX = (Math.random() - 0.5) * 0.8;
+      p.speedY = (Math.random() - 0.7) * 1.2;
+    }
+
+    // 绘制粒子
+    const radius = p.size * p.life;
+    canvasCtx.beginPath();
+    const gradient = canvasCtx.createRadialGradient(
+      p.x,
+      p.y,
+      0,
+      p.x,
+      p.y,
+      radius * 1.5
+    );
+    gradient.addColorStop(0, p.color);
+    gradient.addColorStop(1, "rgba(255, 255, 220, 0)");
+    canvasCtx.fillStyle = gradient;
+    canvasCtx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+    canvasCtx.fill();
+  });
+
+  animationId = requestAnimationFrame(tickParticles);
+}
+
+let resizeTimeout: number;
+function handleResize() {
+  window.clearTimeout(resizeTimeout);
+  resizeTimeout = window.setTimeout(() => {
+    cancelAnimationFrame(animationId);
+    if (!canvasEl.value) return;
+
+    const dpr = window.devicePixelRatio || 1;
+    const width =
+      canvasEl.value.parentElement?.clientWidth || window.innerWidth;
+    const height =
+      canvasEl.value.parentElement?.clientHeight || window.innerHeight;
+
+    canvasEl.value.style.width = `${width}px`;
+    canvasEl.value.style.height = `${height}px`;
+    canvasEl.value.width = width * dpr;
+    canvasEl.value.height = height * dpr;
+
+    canvasCtx?.scale(dpr, dpr);
+
+    // 根据屏幕宽度调整粒子数量
+    const isMobile = width < 768;
+    initParticles(isMobile ? PARTICLE_COUNT_MOBILE : PARTICLE_COUNT_DESKTOP);
+
+    lastTime = 0;
+    animationId = requestAnimationFrame(tickParticles);
+  }, 150);
+}
+
+// ==================== 生命周期 ====================
 onMounted(() => {
-  timer = window.setTimeout(tick, 420);
+  // 启动打字机效果
+  typingTimer = window.setTimeout(typeWriter, 800);
 
-  Imgtimer = window.setInterval(() => {
-    currentIndex.value =
-      (currentIndex.value + 1) % Math.max(1, randomFive.value.length);
-  }, 5200);
-
-  const canvas = canvasEl.value!;
-  ctx = canvas.getContext("2d")!;
-
-  // 当图片加载或资源就绪后调整 canvas 大小并启动渲染
-  ROSE_IMG.onload = () => {
-    resizeCanvas();
-  };
-  // 如果图片已经加载完（缓存情况），也要触发 init
-  if (ROSE_IMG.complete && ROSE_IMG.naturalWidth > 0) {
-    resizeCanvas();
+  // 初始化粒子画布
+  if (canvasEl.value) {
+    canvasCtx = canvasEl.value.getContext("2d")!;
+    handleResize();
+    window.addEventListener("resize", handleResize);
   }
-
-  window.addEventListener("resize", resizeCanvas);
 });
 
 onBeforeUnmount(() => {
-  if (Imgtimer) clearInterval(Imgtimer);
-  if (timer) window.clearTimeout(timer);
-
+  if (typingTimer) clearTimeout(typingTimer);
   cancelAnimationFrame(animationId);
-  window.removeEventListener("resize", resizeCanvas);
+  window.removeEventListener("resize", handleResize);
 });
 </script>
 
 <style lang="scss" scoped>
-/* 奥古斯塔风格 - 紫蓝海感（水母/幻海）+ 毒药/治疗双面高光 */
-$bg-deep: #090608; // 深海夜色底
-$deep-2: #2a1208; // 次深底用于渐变
-$accent-1: #c64830; // 暗紫主光（冷雅）
-$accent-2: #e1d7bd; // 冷海蓝高光（湿光感）
-
-$muted-text: #fff7ef; // 文字
-$glass: rgba(95, 224, 255, 0.04);
-$bubble: rgba(95, 224, 255, 0.06);
+/* 奥古斯塔主题色板：深空夜 + 灼金/赤金电光 + 铁血深红 */
+$color-deep-night: #060408; // 主背景：深空夜色
+$color-metal-dark: #1a0e14; // 金属暗部
+$color-primary-glow: #c64830; // 主辉光 - 暗紫/赤金
+$color-secondary-glow: #ffd460; // 次辉光 - 灼金高光
+$color-blood-shadow: #8b001a; // 血影深红
+$color-text-primary: #fff7ef; // 主文字
+$color-text-secondary: #e1d7bd; // 副文字
+$color-border-glow: rgba(198, 72, 48, 0.4); // 边框辉光
 
 .home {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: radial-gradient(
-      800px 240px at 20% 10%,
-      rgba(95, 224, 255, 0.02),
-      transparent 8%
-    ),
-    linear-gradient(180deg, $bg-deep 0%, $deep-2 76%);
   position: relative;
   overflow: hidden;
-  color: $muted-text;
-  font-family: Inter, "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei",
-    sans-serif;
+  background-color: $color-deep-night;
+  color: $color-text-primary;
+  font-family: "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+  isolation: isolate;
 
-  /* 背景元素：水波纹 + 低透明五线谱（可选） */
-  .rose-canvas {
+  /* 粒子画布 */
+  .particle-canvas {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
-
-    /* 轻微浮动的水纹层（伪元素）*/
-    &::before {
-      content: "";
-      position: absolute;
-      inset: -10% -20%;
-      background: radial-gradient(
-          circle at 30% 10%,
-          rgba(111, 92, 230, 0.03),
-          transparent 10%
-        ),
-        radial-gradient(
-          circle at 80% 70%,
-          rgba(95, 224, 255, 0.02),
-          transparent 8%
-        );
-      animation: slow-drift 18s linear infinite;
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
+    mix-blend-mode: screen; /* 增强光效融合 */
   }
 
-  /* 轮播区：图像做淡入 + 加水感滤镜 */
-  .carousel {
+  /* 静态背景层：深空渐变与光晕 */
+  .background-layer {
     position: absolute;
     inset: 0;
     z-index: 0;
     pointer-events: none;
-
-    &::before {
+    background: radial-gradient(
+        circle at 20% 30%,
+        rgba($color-primary-glow, 0.08) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 80% 70%,
+        rgba($color-blood-shadow, 0.05) 0%,
+        transparent 35%
+      ),
+      linear-gradient(
+        180deg,
+        $color-deep-night 0%,
+        rgba($color-metal-dark, 5%) 100%
+      );
+    &::after {
       content: "";
       position: absolute;
       inset: 0;
-      /* 细线纹理模拟轻微梦谱/五线（非常低透明） */
       background-image: repeating-linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.01) 0px,
-        rgba(255, 255, 255, 0.01) 1px,
+        90deg,
+        transparent,
         transparent 1px,
-        transparent 18px
+        rgba($color-secondary-glow, 0.02) 1px,
+        rgba($color-secondary-glow, 0.02) 2px
       );
-      opacity: 0.06;
-      mix-blend-mode: overlay;
-      z-index: 2;
-      transform: translateY(-4%);
-      animation: staff-scroll 16s linear infinite;
-      pointer-events: none;
-    }
-
-    .carousel-image {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 900ms ease, transform 10s linear;
-      filter: blur(0.6px) saturate(0.78) contrast(0.95) brightness(0.92);
-      transform: scale(1.02);
-
-      &.active {
-        opacity: 1;
-        transform: scale(1);
-      }
+      opacity: 0.4;
     }
   }
-  .carousel2 {
-    display: none;
-  }
 
+  /* 主内容区 */
   .center {
     position: relative;
-    z-index: 4;
+    z-index: 10;
     flex: 1 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 40px 20px;
-    gap: 10px;
+    padding: 2rem 1.5rem;
+    gap: 2.5rem;
 
-    /* 主标题：紫→海蓝渐变文字 + 水母触须光影伪元素 */
-    .title {
-      font-size: 4rem;
-      font-weight: 800;
-      margin: 0;
-      line-height: 1;
-      background: linear-gradient(90deg, $accent-1 0%, $accent-2 72%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: $muted-text;
-      letter-spacing: 0.2px;
-
-      position: relative;
-
-      /* 左下方水母触须影（更梦幻） */
-      &::before {
-        content: "";
-        position: absolute;
-        left: -6%;
-        bottom: -30%;
-        width: 160%;
-        height: 140%;
-        background: radial-gradient(
-            ellipse at 40% 20%,
-            rgba($accent-2, 0.04),
-            transparent 8%
-          ),
-          linear-gradient(90deg, transparent, rgba($accent-1, 0.02));
-        pointer-events: none;
-        mix-blend-mode: screen;
-        filter: blur(12px);
-        animation: tentacle-sway 10s ease-in-out infinite;
-      }
-    }
-
-    .subtitle {
-      font-size: 1.9rem;
-      min-height: 1.6em;
-      color: rgba($muted-text, 0.94);
+    /* 徽记装饰 */
+    .heraldry {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      font-family: "Dancing Script", "Segoe Script", "Brush Script MT", cursive;
-      font-weight: 500;
-      letter-spacing: 0.1em; // 增加字母间距增强手写感
-
-      .typed {
-        display: inline-block;
-        font-weight: 600;
+      width: min(100%, 600px);
+      margin-bottom: 1rem;
+      .heraldry-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          $color-border-glow 30%,
+          $color-border-glow 70%,
+          transparent
+        );
+        &.left {
+          margin-right: 1.5rem;
+        }
+        &.right {
+          margin-left: 1.5rem;
+        }
       }
-
-      .cursor {
-        width: 12px;
-        height: 1.05em;
-        margin-left: 6px;
-        background: linear-gradient(180deg, $accent-2, $accent-1);
-        border-radius: 2px;
-        animation: blink 1s steps(1) infinite;
-        transform: translateY(2px);
-        filter: drop-shadow(0 6px 16px rgba($accent-2, 0.06));
+      .heraldry-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        svg {
+          width: 100%;
+          height: 100%;
+          fill: none;
+          stroke: $color-primary-glow;
+          stroke-width: 1.2;
+          filter: drop-shadow(0 0 6px rgba($color-primary-glow, 0.6));
+        }
       }
     }
-  }
 
-  /* 页脚：深海玻璃 + 细微海蓝边 */
-  .shore-footer-simple {
-    background: linear-gradient(
-      180deg,
-      rgba(6, 6, 10, 0.78),
-      rgba(8, 6, 12, 0.94)
-    );
-    border-top: 1px solid rgba($accent-2, 0.03);
-    color: $muted-text;
-    font-size: 13px;
-    position: relative;
-    overflow: visible;
-
-    .inner.container {
-      width: min(1100px, 94%);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .center {
-      text-align: center;
-      flex: 1 1 auto;
-
-      .slogan {
-        background: linear-gradient(90deg, $accent-1 0%, $accent-2 60%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        display: inline-block;
+    /* 标题区域 */
+    .title-container {
+      .title-main {
+        font-size: clamp(3.5rem, 10vw, 6rem);
+        font-weight: 800;
         line-height: 1;
-        font-size: 14px;
-        letter-spacing: 0.3px;
-        text-shadow: 0 6px 20px rgba(6, 4, 8, 0.6);
+        margin: 0 0 0.5rem 0;
+        background: linear-gradient(
+          135deg,
+          $color-text-primary 0%,
+          $color-secondary-glow 50%,
+          $color-primary-glow 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 20px rgba($color-primary-glow, 0.15);
+        letter-spacing: 0.02em;
       }
+      .title-sub {
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        color: $color-text-secondary;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin: 0;
+        opacity: 0.9;
+      }
+    }
 
-      .meta {
-        color: rgba($muted-text, 0.66);
-        margin-top: 6px;
-        font-size: 12px;
+    /* 语录区域 */
+    .quote-container {
+      max-width: 800px;
+      .quote-main {
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        font-weight: 600;
+        color: $color-text-primary;
+        margin: 0 0 1.5rem 0;
+        line-height: 1.4;
+     
       }
+      .quote-typed {
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        min-height: 1.8em;
+        color: rgba($color-text-secondary, 0.95);
+        .typed-text {
+          font-weight: 500;
+          letter-spacing: 0.03em;
+        }
+        .cursor {
+          display: inline-block;
+          width: 2px;
+          height: 1.2em;
+          margin-left: 4px;
+          background: linear-gradient(
+            to bottom,
+            $color-secondary-glow,
+            $color-primary-glow
+          );
+          border-radius: 1px;
+          animation: blink 1s step-end infinite;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    /* 能力标签 */
+    .ability-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      max-width: 800px;
+      .tag {
+        padding: 0.5em 1.2em;
+        background: rgba($color-metal-dark, 0.7);
+        border: 1px solid rgba($color-primary-glow, 0.3);
+        border-radius: 2em;
+        font-size: 0.9rem;
+        color: $color-text-secondary;
+        letter-spacing: 0.05em;
+        backdrop-filter: blur(4px);
+        transition: all 0.3s ease;
+        &:hover {
+          border-color: $color-primary-glow;
+          color: $color-secondary-glow;
+          box-shadow: 0 0 12px rgba($color-primary-glow, 0.3);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  /* 页脚 */
+  .augusta-footer {
+    position: relative;
+    z-index: 10;
+    padding: 2rem 1.5rem;
+    margin-top: auto;
+    .footer-content {
+      text-align: center;
+      .footer-quote {
+        font-size: 1.1rem;
+        color: $color-text-secondary;
+        margin: 0 0 0.5rem 0;
+        font-style: italic;
+      }
+      .footer-meta {
+        font-size: 0.9rem;
+        color: rgba($color-text-secondary, 0.6);
+        margin: 0;
+        em {
+          color: rgba($color-primary-glow, 0.9);
+          font-style: normal;
+        }
+      }
+    }
+    .footer-border {
+      height: 1px;
+      width: min(400px, 80%);
+      margin: 1.5rem auto 0;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba($color-primary-glow, 0.4) 20%,
+        rgba($color-primary-glow, 0.4) 80%,
+        transparent
+      );
     }
   }
 }
 
-/* 单独浮动音符（可插入 .floating-note 在 DOM）*/
-.floating-note {
-  position: absolute;
-  font-size: 14px;
-  color: $accent-2;
-  opacity: 0.95;
-  transform-origin: center;
-  animation: note-float 4.8s ease-in-out infinite;
-  filter: drop-shadow(0 6px 18px rgba($accent-2, 0.06));
-}
-
-/* 关键帧：水波/触须漂动、谱线滚动、气泡上升、音符浮动 */
-@keyframes staff-scroll {
-  0% {
-    transform: translateY(-6%);
-    opacity: 0.92;
-  }
-  50% {
-    transform: translateY(6%);
-    opacity: 0.98;
-  }
-  100% {
-    transform: translateY(-6%);
-    opacity: 0.92;
-  }
-}
-
-@keyframes note-float {
-  0% {
-    transform: translateY(0) rotate(-4deg) scale(0.96);
-    opacity: 0.86;
-  }
-  50% {
-    transform: translateY(-10px) rotate(2deg) scale(1.02);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(0) rotate(-4deg) scale(0.96);
-    opacity: 0.86;
-  }
-}
-
+/* 关键帧动画 */
 @keyframes blink {
-  0% {
+  0%,
+  50% {
     opacity: 1;
   }
-  50% {
+  51%,
+  100% {
     opacity: 0;
   }
-  100% {
-    opacity: 1;
-  }
 }
 
-@keyframes tentacle-sway {
-  0% {
-    transform: translateY(0) rotate(-1deg);
-  }
-  50% {
-    transform: translateY(-6px) rotate(1deg);
-  }
-  100% {
-    transform: translateY(0) rotate(-1deg);
-  }
-}
-
-@keyframes slow-drift {
-  0% {
-    transform: translateX(0) translateY(0);
-    opacity: 0.95;
-  }
-  50% {
-    transform: translateX(-8px) translateY(-6px);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(0) translateY(0);
-    opacity: 0.95;
-  }
-}
-
-/* 响应式：移动优先 */
-@media (max-width: 720px) {
+/* 响应式调整 */
+@media (max-width: 768px) {
   .home {
-    .carousel {
-      display: none;
-    }
-    .carousel2 {
-      display: block;
-    }
     .center {
-      padding: 18px 14px;
-      .title {
-        font-size: 2.2rem;
+      gap: 2rem;
+      padding: 1.5rem 1rem;
+      .heraldry .heraldry-icon {
+        width: 2.8rem;
+        height: 2.8rem;
       }
-      .subtitle {
+      .ability-tags {
+        gap: 0.6rem;
+        .tag {
+          font-size: 0.85rem;
+          padding: 0.4em 1em;
+        }
+      }
+    }
+    .augusta-footer {
+      padding: 1.5rem 1rem;
+    }
+  }
+}
+
+/* 小屏优化 */
+@media (max-width: 480px) {
+  .home .center {
+    .title-container .title-main {
+      font-size: 2.8rem;
+    }
+    .quote-container {
+      .quote-main {
         font-size: 1.4rem;
+      }
+      .quote-typed {
+        font-size: 1rem;
       }
     }
   }

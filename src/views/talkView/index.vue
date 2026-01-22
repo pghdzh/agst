@@ -378,47 +378,50 @@ async function sendMessage() {
     //  throw new Error("测试错误");
     const history = chatLog.value.filter((msg) => !msg.isEgg && !msg.isError);
     const botReply = await sendMessageToHui(userText, history);
-    chatLog.value.push({
-      id: Date.now() + 1,
-      role: "bot",
-      text: botReply,
-    });
-
-    // —— 鼓励彩蛋：5% 概率触发 ——
-    if (Date.now() - lastEggTime > coolDownPeriod && Math.random() < 0.05) {
-      // 随机挑一条
-      let voiceId = Math.floor(Math.random() * encourageEggs.length);
-      const egg = encourageEggs[voiceId];
-
-      // 记录触发过的语音编号
-      triggeredVoices.add(voiceId || 0);
-
-      // 保存到 localStorage
-      localStorage.setItem(
-        "triggeredVoices",
-        JSON.stringify([...triggeredVoices])
-      );
-
-      // 播放对应语音（不带 .mp3 后缀）
-      playVoice(egg.file);
-      // 推入带标记的彩蛋消息
+    if (botReply == "error") {
       chatLog.value.push({
         id: Date.now() + 2,
         role: "bot",
-        text: `<p style="color:#C64830; font-style: italic;font-weight: bold">${egg.text}</p>`,
-        isEgg: true,
+        text: "API余额耗尽了，去b站提醒我充钱吧",
+        isError: true,
       });
-      lastEggTime = Date.now();
+    } else {
+      chatLog.value.push({
+        id: Date.now() + 1,
+        role: "bot",
+        text: botReply,
+      });
+
+      // —— 鼓励彩蛋：5% 概率触发 ——
+      if (Date.now() - lastEggTime > coolDownPeriod && Math.random() < 0.05) {
+        // 随机挑一条
+        let voiceId = Math.floor(Math.random() * encourageEggs.length);
+        const egg = encourageEggs[voiceId];
+
+        // 记录触发过的语音编号
+        triggeredVoices.add(voiceId || 0);
+
+        // 保存到 localStorage
+        localStorage.setItem(
+          "triggeredVoices",
+          JSON.stringify([...triggeredVoices])
+        );
+
+        // 播放对应语音（不带 .mp3 后缀）
+        playVoice(egg.file);
+        // 推入带标记的彩蛋消息
+        chatLog.value.push({
+          id: Date.now() + 2,
+          role: "bot",
+          text: `<p style="color:#C64830; font-style: italic;font-weight: bold">${egg.text}</p>`,
+          isEgg: true,
+        });
+        lastEggTime = Date.now();
+      }
+      // —— 彩蛋结束 ——
     }
-    // —— 彩蛋结束 ——
   } catch (e) {
     console.error(e);
-    chatLog.value.push({
-      id: Date.now() + 2,
-      role: "bot",
-      text: "API余额耗尽了，去b站提醒我充钱吧",
-      isError: true,
-    });
   } finally {
     loading.value = false;
     await scrollToBottom();
@@ -525,9 +528,9 @@ onBeforeUnmount(() => {
 
 <style scoped lang="scss">
 /* 颜色变量（集中管理）*/
-$accent-1:#C64830; // 主色（紫）
-$accent-2:#E1D7BD; // 副色（青蓝）
-$accent-2-light: #e0daca; // $accent-2 向白方向提亮约12%（手算替代 lighten）
+$accent-1: #c64830; // 主色（紫）
+$accent-2: #e1d7bd; // 副色（青蓝）
+$accent-2-light: #e0daca; // $accent-2 向白方向提亮约12%（手算替代 rgba）
 $gold: #ffd78a; // 点缀金色
 $text-light: #f6f3f7; // 近白文本
 
@@ -665,7 +668,7 @@ $text-light-72: rgba($text-light, 0.72);
     padding: 10px 16px;
     border-radius: 12px;
     font-size: 14px;
-    color: $accent-2-light; /* 直接使用替代色，避免 lighten() */
+    color: $accent-2-light; /* 直接使用替代色，避免 rgba() */
     justify-content: space-around;
     box-shadow: 0 12px 34px rgba(2, 4, 8, 0.6);
     border: 1px solid $accent-2-06;

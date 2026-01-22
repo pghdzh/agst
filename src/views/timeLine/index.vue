@@ -1,5 +1,5 @@
 <template>
-  <div class="megumi-page" aria-live="polite">
+  <div class="augusta-page" aria-live="polite">
     <main class="container" ref="mainContainer">
       <!-- HERO 区域 -->
       <header class="hero" role="banner">
@@ -20,179 +20,168 @@
         </div>
         <div class="right-col" ref="metaCard">
           <div class="hero-panel">
-            <h1 class="name">奥古斯塔 <span class="jp">（七丘总督）</span></h1>
+            <h1 class="name">
+              奥古斯塔 <span class="jp">（七丘总督 · 英雄王）</span>
+            </h1>
             <p class="subtitle">烈阳所照，皆是征途；荣耀，归于七丘！</p>
             <p class="lead">
-              角斗场上的不败冠冕，诞于血与铁的无畏领袖。
-              她以平凡之躯成就辉煌，以剑锋诠释何为力量。
+              角斗场上的不败冠冕，七丘地区最强大的角斗士，七丘现任总督。
+              她以平凡之躯成就辉煌，以剑锋诠释何为力量。从法比亚纳遗孤到英雄王，
+              她以非凡的政治手腕和无可匹敌的武力，成为七丘众望所归的领袖。
             </p>
+            <div class="hero-tags">
+              <span class="tag">七丘总督</span>
+              <span class="tag">不败冠军</span>
+              <span class="tag">法比亚纳遗孤</span>
+            </div>
           </div>
         </div>
       </header>
 
-      <!-- 内容卡片区 -->
-      <section id="personality" class="card personality">
-        <div class="card-head">
-          <h2>核心机制</h2>
-        </div>
-        <ul class="traits">
-          <li>
-            奥古斯塔通过积累【战势】可以施放派生重击、通过积累【权炳】可以施放派生共鸣技能。
-            <br />
-            通过固有技能·炽盛决意、延奏技能·不屈的战歌、以及施放共鸣技能·不败恒阳·落袭可以获得【威慑】。
-            <br />
-            当拥有2层【威慑】时，奥古斯塔可以施放共鸣解放·赫日威临，进入7秒俯首之刻，最终施放共鸣解放·赫日威临·不朽者之肃。
-          </li>
-          <li>
-            · 满【战势】时：
-            <br />
-            ·Z施放重击·烁雷·后撤，一定时间后松开A，或再次短按A施放重击·烁雷·旋切。
-            <br />
-            ·短按跳跃施放重击·烁雷·升拳。
-            <br />
-            ·施放重击·鸣铁时，一定时间后松开A，或再次短按A或短按跳跃，施放重击·烁雷·升拳。
-            <br />
-            ·施放共鸣技能·斩锋时，短按E或短按跳跃，施放重击·烁雷·升拳。
-          </li>
-          <li>
-            · 满【权炳】时： 短按E+短按E/A+短按E/A
-            <br />
-            ·可依次施放共鸣技能·不败恒阳·迅击
-            、共鸣技能·不败恒阳·跃空以及共鸣技能·不败恒阳·落袭。
-            <br />
-            · 满【威慑】时： 长按R ·可施放共鸣解放·赫日威临。
-          </li>
-
-          <li style="font-weight: bold">输出流程：</li>
-          <li>（变奏入场）-ZA-E-ZA-R-【强化】EEE-长按R-A*9-Q（满协奏切人）</li>
-          <li>
-            技能缩写：普攻 = A，重击 = Z，共鸣技能 = E，共鸣解放 = R，声骸 = Q
-          </li>
-        </ul>
-      </section>
-
+      <!-- 共鸣状况 -->
       <section id="resonance-status" class="card overview">
         <div class="card-head">
-          <h2>共鸣状况</h2>
+          <h2>共鸣状况 · 磁律掌控者</h2>
         </div>
         <div class="two-col">
           <div class="text-block">
             <p>
-              姓名：奥古斯塔
+              <strong>姓名：奥古斯塔</strong><br />
               该选手共鸣史长，几乎等同于年龄，推测为先天型共鸣者。
-              该选手声痕位于左手手背，共鸣后能以自身为中心产生并操控半径约十米的磁场。伴随对共鸣能力的熟练使用，选手可以自由操纵、塑形能力范围内含有铁、钴、镍的物质。但根据选手自述及测试数据推算，该共鸣能力存在开发上限，半径十米似乎就已经是其所能使用能力的极限范围。
+              该选手声痕位于左手手背，共鸣后能以自身为中心产生并操控半径约十米的磁场。伴随对共鸣能力的熟练使用，选手可以自由操纵、塑形能力范围内含有铁、钴、镍的物质。
             </p>
             <p>
-              “少见的先天型共鸣者，但她的共鸣能力仅能在一定程度上辅助自己的战斗，平平无奇就是对它最好的描述。这样的选手想要在角斗赛中脱颖而出，就跟让太阳在午夜升起一样，不切实际。”——来自检验医生的评语
-              那道自童年时期就烙印在她手上的声痕，是来自上天的恩赐，同时也像一个恶毒的玩笑。孱弱的共鸣能力曾是她自己设下的枷锁，而如今，她早已熔断这层桎梏。她用自己的脚步上高天，她向世人证明，即便生为无光的尘埃，也能绽放烈阳般的辉煌。
+              但根据选手自述及测试数据推算，该共鸣能力存在开发上限，半径十米似乎就已经是其所能使用能力的极限范围。
+              在战斗中，这种能力可以偏转金属武器，制造电磁脉冲干扰敌人，甚至在一定范围内形成磁场护盾。
+            </p>
+          </div>
+          <div class="text-block">
+            <p>
+              "少见的先天型共鸣者，但她的共鸣能力仅能在一定程度上辅助自己的战斗，平平无奇就是对它最好的描述。这样的选手想要在角斗赛中脱颖而出，就跟让太阳在午夜升起一样，不切实际。"——来自检验医生的评语
+            </p>
+            <p>
+              那道自童年时期就烙印在她手上的声痕，是来自上天的恩赐，同时也像一个恶毒的玩笑。孱弱的共鸣能力曾是她自己设下的枷锁，而如今，她早已熔断这层桎梏。
+            </p>
+            <p>
+              她用自己的脚步上高天，她向世人证明，即便生为无光的尘埃，也能绽放烈阳般的辉煌。未曜的磁律在她手中，已从辅助工具转变为战场上令人胆寒的力量。
             </p>
           </div>
         </div>
       </section>
 
-      <!-- 新增三大主题区域 -->
-      <section id="food" class="card special-section">
+      <!-- 象征物展示区 -->
+      <section id="symbolic-items" class="card special-section">
         <div class="card-head">
-          <h2>日与狮鹫之印</h2>
+          <h2>象征之物 · 记忆与信念</h2>
         </div>
-        <div class="content two-col">
-          <div class="img-area">
-            <img src="./img/item1.png" loading="lazy" decoding="async" />
+
+        <section class="item-section">
+          <div class="card-head">
+            <h3>日与狮鹫之印</h3>
           </div>
-          <div class="text-block">
-            <p>
-              据说雕琢印章所用的石材，取自先祖们初次登上七丘高地时足下所踏的山岩。石岩的质地坚硬而细腻，色泽洁白，其上蜿蜒的纹路，是岁月刻在这片土地上，无可磨灭的痕迹。
-            </p>
-            <p>
-              印章的表面，嵌有以华贵金属铸就的鹰鹫及太阳，前者象征无畏和远见，后者则寓意恒久与辉煌。人们将建立七丘城之初一切美好的愿景，授予这枚小小的印章，时刻提醒着它的所有者：勿忘初志。
-            </p>
-            <p>
-              奥古斯塔至今仍记得第一次触碰印章时指尖传来的温度，那种冰冷中带着灼意的触感，是权力在沉默中沸腾。她深知这份权柄的背后，并非只有荣耀，一如这枚印章，它轻巧得足以让人毫不费力地抛起，却又沉重地躺在掌心，像压在脊骨上那无从卸下的责任。
-            </p>
+          <div class="content two-col">
+            <div class="img-area">
+              <img src="./img/item1.png" loading="lazy" decoding="async" />
+            </div>
+            <div class="text-block">
+              <p>
+                据说雕琢印章所用的石材，取自先祖们初次登上七丘高地时足下所踏的山岩。石岩的质地坚硬而细腻，色泽洁白，其上蜿蜒的纹路，是岁月刻在这片土地上，无可磨灭的痕迹。
+              </p>
+              <p>
+                印章的表面，嵌有以华贵金属铸就的鹰鹫及太阳，前者象征无畏和远见，后者则寓意恒久与辉煌。人们将建立七丘城之初一切美好的愿景，授予这枚小小的印章，时刻提醒着它的所有者：<strong>勿忘初志</strong>。
+              </p>
+              <p>
+                奥古斯塔至今仍记得第一次触碰印章时指尖传来的温度，那种冰冷中带着灼意的触感，是<strong>权力在沉默中沸腾</strong>。她深知这份权柄的背后，并非只有荣耀，一如这枚印章，它轻巧得足以让人毫不费力地抛起，却又沉重地躺在掌心，像压在脊骨上那无从卸下的责任。
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
-      <section id="shattered-crystal" class="card special-section">
-        <div class="card-head">
-          <h2>旧发带</h2>
-        </div>
-        <div class="content two-col">
-          <div class="img-area">
-            <img src="./img/item2.png" loading="lazy" decoding="async" />
+        </section>
+
+        <section class="item-section">
+          <div class="card-head">
+            <h3>旧发带</h3>
           </div>
-          <div class="text-block">
-            <p>
-              曾为无名少女的奥古斯塔，用闲暇时打零工攒下的钱，买下了这条印有七丘传统图案的发带。那会儿的她还只是个活在尘埃里、默默无闻的角斗士，每当上场迎战时，她总会将这条发带系在额间。它见证了她的每一场战斗，也悄悄为她拭去了每一次无言的泪水。
-            </p>
-            <p>
-              在一场血战前夕，奥古斯塔将发带摊平在膝上，她手法笨拙，却仍旧一针一线地在发带的背面绣下了一排小字：
-            </p>
-            <p>“愿我流血时，仍不忘为何而举剑。”</p>
-            <p>
-              字迹歪斜，针脚生涩，她绣完最后一针，然后站起身，又一次将发带紧绑在额前。
-              她没有回望向来时的路。
-            </p>
-            <p>此刻，她已无需再回头了。</p>
+          <div class="content two-col">
+            <div class="img-area">
+              <img src="./img/item2.png" loading="lazy" decoding="async" />
+            </div>
+            <div class="text-block">
+              <p>
+                曾为无名少女的奥古斯塔，用闲暇时打零工攒下的钱，买下了这条印有七丘传统图案的发带。那会儿的她还只是个活在尘埃里、默默无闻的角斗士，每当上场迎战时，她总会将这条发带系在额间。它见证了她的每一场战斗，也悄悄为她拭去了每一次无言的泪水。
+              </p>
+              <p>
+                在一场血战前夕，奥古斯塔将发带摊平在膝上，她手法笨拙，却仍旧一针一线地在发带的背面绣下了一排小字：
+              </p>
+              <p>"<strong>愿我流血时，仍不忘为何而举剑。</strong>"</p>
+              <p>
+                字迹歪斜，针脚生涩，她绣完最后一针，然后站起身，又一次将发带紧绑在额前。
+              </p>
+              <p>她没有回望向来时的路。</p>
+              <p>此刻，她已无需再回头了。</p>
+            </div>
           </div>
-        </div>
+        </section>
+
+        <section class="item-section">
+          <div class="card-head">
+            <h3>"小橡斗"</h3>
+          </div>
+          <div class="content two-col">
+            <div class="img-area">
+              <img src="./img/item3.png" loading="lazy" decoding="async" />
+            </div>
+            <div class="text-block">
+              <p>
+                年少的奥古斯塔用橡果创造出的“玩伴”，它与它那几位其貌不扬又命途多舛的兄弟姐妹有一个共同的来处，法比亚纳的大橡树。
+              </p>
+              <p>
+                那时，奥古斯塔的双手还有些稚拙，她先后摆弄出的好几个歪歪扭扭的橡果角斗士，不是断了腿，就是塌了脑袋，她为那些“短命”的小家伙们一一取了名字，却又不得不挨个将它们埋进院子里。直到她将尚未完工的小橡斗递到父亲面前，在那个有些闷热的夜晚，小橡斗在父亲的手中“活”了下来，它结实、漂亮，像一位了不起的角斗士。
+              </p>
+              <p>是的，小橡斗是一位战功赫赫的角斗士，它的战绩如下：</p>
+              <p>——打败了一只试图在它头盔上结网的小跳蛛。</p>
+              <p>——打败了闯进窗户的暴雨。</p>
+              <p>——打败了橡果角斗士"大块头"。</p>
+              <p>——打败了橡果角斗士"高个子"。</p>
+              <p>
+                在奥古斯塔童年无垠的想象中，小橡斗才是<strong>“英雄王”</strong>最该有的模样。
+              </p>
+              <p>
+                许多年过去，如今，小橡斗静静地躺在书房的角落，像一位久经沙场、功成身退的年迈角斗士。而那个曾仰望它、渴望成为它的人，依然走在奔赴未来的路上。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="item-section">
+          <div class="card-head">
+            <h3>甘叶分瓣面包</h3>
+          </div>
+          <div class="content two-col">
+            <div class="img-area">
+              <img src="./img/food.png" loading="lazy" decoding="async" />
+            </div>
+            <div class="text-block">
+              <p>
+                无甚特别的七丘传统面包，即便在远离城区的法比亚纳，它亦是随处可见的寻常餐食。可似乎是为了区别于其他庸常无奇，法比亚纳当地的师傅总是习惯在面包那层酥脆的面壳上，撒上一小撮香料碎叶，顺便郑重其事地用小刀在面皮上刻下“美味”二字，仿佛这质朴的宣言，多少能赋予面包一些与众不同的体面。
+              </p>
+              <p>是美味的吧？年少的奥古斯塔从未这么认为。</p>
+              <p>
+                那不过是玩得筋疲力尽后归家，伸手可得的果腹之物，是母亲日复一日端上餐桌的平淡“注脚”，它干硬、朴素、无需赞美，像水、像阳光，平凡到几乎难以被人察觉。直到多年后，在七丘城住所的炉灶前，奥古斯塔尝试寻回那存在于记忆深处的味道，当熟悉的微香和甘甜再次浮现于齿间，她才终于明白了<strong>“美味”</strong>的含义。
+              </p>
+              <p>或许，她从未有一刻真正与故乡告别。</p>
+            </div>
+          </div>
+        </section>
       </section>
 
-      <section id="cyclic-clock" class="card special-section">
-        <div class="card-head">
-          <h2>"小橡斗"</h2>
-        </div>
-        <div class="content two-col">
-          <div class="img-area">
-            <img src="./img/item3.png" loading="lazy" decoding="async" />
-          </div>
-          <div class="text-block">
-            <p>
-              年少的奥古斯塔用橡果创造出的“玩伴”，它与它那几位其貌不扬又命途多舛的兄弟姐妹有一个共同的来处，法比亚纳的大橡树。
-            </p>
-            <p>
-              那时，奥古斯塔的双手还有些稚拙，她先后摆弄出的好几个歪歪扭扭的橡果角斗士，不是断了腿，就是塌了脑袋，她为那些“短命”的小家伙们一一取了名字，却又不得不挨个将它们埋进院子里。直到她将尚未完工的小橡斗递到父亲面前，在那个有些闷热的夜晚，小橡斗在父亲的手中“活”了下来，它结实、漂亮，像一位了不起的角斗士。
-            </p>
-            <p>是的，小橡斗是一位战功赫赫的角斗士，它的战绩如下：</p>
-            <p>——打败了一只试图在它头盔上结网的小跳蛛。</p>
-            <p>——打败了闯进窗户的暴雨。</p>
-            <p>——打败了橡果角斗士“大块头”。</p>
-            <p>——打败了橡果角斗士“高个子”。</p>
-            <p>在奥古斯塔童年无垠的想象中，小橡斗才是“英雄王”最该有的模样。</p>
-            <p>
-              许多年过去，如今，小橡斗静静地躺在书房的角落，像一位久经沙场、功成身退的年迈角斗士。而那个曾仰望它、渴望成为它的人，依然走在奔赴未来的路上。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="collective-album" class="card special-section">
-        <div class="card-head">
-          <h2>甘叶分瓣面包</h2>
-        </div>
-        <div class="content two-col">
-          <div class="img-area">
-            <img src="./img/food.png" loading="lazy" decoding="async" />
-          </div>
-          <div class="text-block">
-            <p>
-              无甚特别的七丘传统面包，即便在远离城区的法比亚纳，它亦是随处可见的寻常餐食。可似乎是为了区别于其他庸常无奇，法比亚纳当地的师傅总是习惯在面包那层酥脆的面壳上，撒上一小撮香料碎叶，顺便郑重其事地用小刀在面皮上刻下“美味”二字，仿佛这质朴的宣言，多少能赋予面包一些与众不同的体面。
-            </p>
-            <p>是美味的吧？年少的奥古斯塔从未这么认为。</p>
-            <p>
-              那不过是玩得筋疲力尽后归家，伸手可得的果腹之物，是母亲日复一日端上餐桌的平淡“注脚”，它干硬、朴素、无需赞美，像水、像阳光，平凡到几乎难以被人察觉。直到多年后，在七丘城住所的炉灶前，奥古斯塔尝试寻回那存在于记忆深处的味道，当熟悉的微香和甘甜再次浮现于齿间，她才终于明白了“美味”的含义。
-            </p>
-            <p>或许，她从未有一刻真正与故乡告别。</p>
-          </div>
-        </div>
-      </section>
-
+      <!-- 剧情时间线 -->
       <section
         id="timeline"
         class="card timeline"
         aria-labelledby="timeline-heading"
       >
         <div class="card-head">
-          <h2 id="timeline-heading">共鸣链详解</h2>
+          <h2 id="timeline-heading">命运轨迹 · 从遗孤到英雄王</h2>
         </div>
         <div class="tl-wrap" role="list">
           <div class="vl" aria-hidden="true"></div>
@@ -203,10 +192,9 @@
               class="tl-item"
               role="listitem"
               tabindex="0"
-              :aria-label="``"
             >
               <div class="tl-card">
-                <h3 class="tl-title">第 {{ i + 1 }} 链 · {{ ev.title }}</h3>
+                <h3 class="tl-title">{{ ev.title }}</h3>
                 <p class="tl-desc">{{ ev.desc }}</p>
               </div>
             </li>
@@ -214,6 +202,30 @@
         </div>
       </section>
 
+      <!-- 共鸣链详解 -->
+      <section id="resonance-chain" class="card resonance-chain">
+        <div class="card-head">
+          <h2>共鸣链详解 · 以众愿为冕</h2>
+        </div>
+        <div class="chain-grid">
+          <div
+            v-for="(chain, i) in resonanceChains"
+            :key="i"
+            class="chain-card"
+            :class="`chain-${i + 1}`"
+          >
+            <div class="chain-header">
+              <span class="chain-number">第 {{ i + 1 }} 链</span>
+              <h3 class="chain-title">{{ chain.title }}</h3>
+            </div>
+            <div class="chain-content">
+              <p>{{ chain.desc }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 奥古斯塔纪事 -->
       <section class="ll-stories" ref="storyRef">
         <div class="card" role="region" aria-labelledby="stories-title">
           <header class="card-head">
@@ -227,13 +239,9 @@
                 :id="`panel-${items[current].id}`"
                 class="story"
                 role="tabpanel"
-                :aria-labelledby="`tab-${items[current].id}`"
               >
                 <h3 class="story-head">{{ items[current].title }}</h3>
-                <div
-                  class="story-content"
-                  v-html="items[current].content"
-                ></div>
+                <div class="story-content">{{ items[current].content }}</div>
               </article>
             </transition>
           </main>
@@ -250,6 +258,23 @@
         </div>
       </section>
     </main>
+
+    <!-- 浮动元素 -->
+    <div class="floating-elements">
+      <div
+        v-for="(element, i) in floatingElements"
+        :key="i"
+        class="floating-element"
+        :style="{
+          top: element.top + 'px',
+          left: element.left + 'px',
+          animationDelay: element.delay + 's',
+        }"
+      >
+        {{ element.symbol }}
+      </div>
+    </div>
+
     <div class="floating-chibis">
       <img
         v-for="(pet, i) in chibiList"
@@ -268,7 +293,36 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+// 剧情时间线
 const timeline = ref([
+  {
+    title: "法比亚纳遗孤",
+    desc: "出生于法比亚纳，是十六年前黑潮事件的唯一幸存者。幼年时开始听到低语，被错误引导认为这些声音来自死去的英雄王。",
+  },
+  {
+    title: "角斗士之路",
+    desc: "从无名角斗士开始，凭借顽强的意志和战斗天赋，在角斗场上屡战屡胜，逐渐崭露头角。",
+  },
+  {
+    title: "击败马格诺",
+    desc: "在地下角斗场击败了隐藏身份的七丘总督马格诺，展现了超越传说的实力，引起了总督的注意。",
+  },
+  {
+    title: "总督继任",
+    desc: "接受马格诺的托付，成为七丘新任总督。马格诺选择以毒酒结束生命，将未来的希望寄托于奥古斯塔。",
+  },
+  {
+    title: "低语真相",
+    desc: "在索诺拉大树洞发现真相——脑海中的声音并非英雄王，而是鸣式利维亚坦的蛊惑，目的是为了未来夺舍她的强大肉身。",
+  },
+  {
+    title: "英雄王的诞生",
+    desc: "主动制造'英雄王'，让漂泊者击败自己，以旧王的血为新王加冕。在决战中真正成为预言中的英雄王，一拳打碎宿命。",
+  },
+]);
+
+// 共鸣链
+const resonanceChains = ref([
   {
     title: "于焦壤中蒙垢",
     desc: ` 【以众愿为冕】每层使暴击伤害额外提升15%。
@@ -296,7 +350,7 @@ const timeline = ref([
   },
   {
     title: "于怒潮中卓立",
-    desc: `固有技能·荣誉的加护获得护盾量提升50%。`,
+    desc: `施放变奏技能·灼金的巡行时，队伍中的角色的攻击提升20%，持续30秒。`,
   },
   {
     title: "于耀光中刻名",
@@ -307,10 +361,7 @@ const timeline = ref([
   },
 ]);
 
-const reducedMotion =
-  window.matchMedia &&
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
+// 纪事内容
 const items = [
   {
     id: "1",
@@ -468,7 +519,6 @@ const items = [
 
 那一天，她听见无数嘈杂的声音，却唯没有听见那道低语。`,
   },
-
   {
     id: "3",
     title: "“无瑕”的英雄",
@@ -534,11 +584,10 @@ const items = [
 
 不久后，一个寻常日子里，奥古斯塔收到了一封亲笔信，那是来自总督宫的邀请。`,
   },
-
   {
     id: "4",
     title: "荆棘王座",
-    content: `在你问出许多个‘为什么’之前，请让我先确认一件事吧。”
+    content: `“在你问出许多个‘为什么’之前，请让我先确认一件事吧。”
 
 “你……是不是出身法比亚纳？”
 
@@ -620,7 +669,6 @@ const items = [
 
 “带路吧。”`,
   },
-
   {
     id: "5",
     title: "某一日，在角斗场……",
@@ -687,27 +735,42 @@ const items = [
 “来久违地较量一场吗！？”`,
   },
 ];
+
 const current = ref(0);
+
+// 浮动元素
+const floatingElements = ref([
+  { symbol: "⚡", top: 100, left: 50, delay: 0 },
+  { symbol: "🛡️", top: 300, left: 85, delay: 1.2 },
+  { symbol: "👑", top: 200, left: 90, delay: 2.4 },
+  { symbol: "⚔️", top: 400, left: 30, delay: 0.8 },
+  { symbol: "🔥", top: 150, left: 70, delay: 1.6 },
+]);
+
+const reducedMotion =
+  window.matchMedia &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function select(index) {
   current.value = index;
-  // 将焦点移回当前 tab（便于无障碍与键盘导航）
-  const id = `tab-${items[index].id}`;
-  const el = document.getElementById(id);
-  if (el) el.focus();
 }
+
 const storyRef = ref<HTMLElement | null>(null);
 
 function prev() {
   current.value = (current.value - 1 + items.length) % items.length;
   select(current.value);
-  storyRef.value.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (storyRef.value) {
+    storyRef.value.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
 
 function next() {
   current.value = (current.value + 1) % items.length;
   select(current.value);
-  storyRef.value.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (storyRef.value) {
+    storyRef.value.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
 interface Chibi {
   src: string;
@@ -716,8 +779,10 @@ interface Chibi {
 }
 
 const chibiList = ref<Chibi[]>([]);
+
 onMounted(async () => {
   if (!reducedMotion) {
+    // 初始动画
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     tl.from(".avatar-card", {
       duration: 0.8,
@@ -730,6 +795,7 @@ onMounted(async () => {
       "-=0.45"
     );
 
+    // 时间线动画
     gsap.utils.toArray(".tl-item").forEach((it: any, idx: number) => {
       gsap.from(it.querySelector(".tl-card"), {
         scrollTrigger: {
@@ -744,6 +810,22 @@ onMounted(async () => {
       });
     });
 
+    // 共鸣链动画
+    gsap.utils.toArray(".chain-card").forEach((card: any, idx: number) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        x: idx % 2 === 0 ? -30 : 30,
+        duration: 0.8,
+        delay: idx * 0.1,
+      });
+    });
+
+    // 浮动头像动画
     gsap.to(".avatar-card", {
       scale: 1.007,
       duration: 2.8,
@@ -756,7 +838,7 @@ onMounted(async () => {
   }
 
   // 1. 基础配置信息
-  const total = 6;
+  const total = 10;
   let pickCount = 3; // 每次抽取 3 张
   const vw = window.innerWidth;
   const vh = window.innerHeight;
@@ -776,10 +858,10 @@ onMounted(async () => {
   }
 
   // 3. 随机选出 3 个编号
+  const nums = shuffle(Array.from({ length: total }, (_, k) => k + 1));
   if (isMobile) {
     pickCount = 1;
   }
-  const nums = shuffle(Array.from({ length: total }, (_, k) => k + 1));
   const picks = nums.slice(0, pickCount);
 
   // 4. 生成随机位置并填充 chibiList
@@ -860,45 +942,48 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
-/* 奥古斯塔风格 —— 紫蓝海感（水母/幻海） + 毒药/治愈双重高光 */
-$bg-deep: #090608; // 深海夜色底
-$deep-2: #2a1208; // 次深底用于渐变
-$accent-1: #c64830; // 暗紫主光（冷雅）
-$accent-2: #e1d7bd; // 冷海蓝高光（湿光感）
-
-$text-main: #fff7ef;
-$card-bg: rgba(6, 8, 12, 0.46);
-$card-border: rgba(184, 107, 224, 0.06);
-$soft-shadow: rgba(0, 0, 0, 0.6);
-$inner-glow: rgba(184, 107, 224, 0.03);
-/* 固定浮动小 chibi 层（保留） */
+/* 奥古斯塔主题色板 */
+$color-deep-night: #060408; // 主背景：深空夜色
+$color-metal-dark: #1a0e14; // 金属暗部
+$color-primary-glow: #c64830; // 主辉光 - 暗紫/赤金
+$color-secondary-glow: #ffd460; // 次辉光 - 灼金高光
+$color-blood-shadow: #8b001a; // 血影深红
+$color-text-primary: #fff7ef; // 主文字
+$color-text-secondary: #e1d7bd; // 副文字
+$color-border-glow: rgba(198, 72, 48, 0.4); // 边框辉光
 .floating-chibis {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 1;
-  .chibi-img {
-    position: absolute;
-    width: 80px;
-    user-select: none;
-    transform-origin: center center;
-    pointer-events: auto;
-    z-index: 10;
-  }
+  z-index: 99;
 }
 
-.megumi-page {
+.chibi-img {
+  position: absolute;
+  width: 80px;
+  user-select: none;
+  transform-origin: center center;
+  pointer-events: auto;
+  z-index: 10;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+.augusta-page {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(180deg, $bg-deep 0%, $deep-2 72%);
+  background: linear-gradient(
+    180deg,
+    $color-deep-night 0%,
+    $color-metal-dark 100%
+  );
   font-family: "Noto Sans SC", system-ui, -apple-system, "Segoe UI", Roboto,
     Arial;
-  color: $text-main;
+  color: $color-text-primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: clamp(20px, 4vw, 80px);
+  padding: clamp(20px, 4vw, 40px);
   box-sizing: border-box;
   padding-top: 60px;
+  overflow-x: hidden;
 
   &.reduced-motion * {
     transition: none !important;
@@ -908,304 +993,710 @@ $inner-glow: rgba(184, 107, 224, 0.03);
   .container {
     position: relative;
     z-index: 10;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: clamp(12px, 2vw, 40px);
+    padding: clamp(12px, 2vw, 24px);
   }
 }
 
-/* ========== HERO 区域（整体暗化 + 血玫点光） ========== */
+/* ========== HERO 区域 ========== */
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 28px;
+  grid-template-columns: 500px 1fr;
+  gap: 32px;
   align-items: start;
-  padding: 12px;
-  margin-bottom: 12px;
+  padding: 20px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba($color-metal-dark, 0.8) 0%,
+    rgba($color-deep-night, 0.9) 100%
+  );
+  border: 1px solid $color-border-glow;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba($color-primary-glow, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
-  /* 乐谱画布 —— 在 hero 背后增加五线谱移动感 */
   &::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background-image: repeating-linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.02) 0px,
-      rgba(255, 255, 255, 0.02) 1px,
-      transparent 1px,
-      transparent 16px
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba($color-primary-glow, 0.03) 50%,
+      transparent 100%
     );
-    opacity: 0.06;
-    mix-blend-mode: overlay;
-    transform: translateY(-4%);
-    animation: staff-drift 16s linear infinite;
+    border-radius: 20px;
+    pointer-events: none;
   }
 
   .left-col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 6;
   }
 
   .avatar-card {
     background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.01),
-      rgba(184, 107, 224, 0.01)
+      135deg,
+      rgba($color-metal-dark, 0.9) 0%,
+      rgba($color-deep-night, 0.95) 100%
     );
-    border-radius: 16px;
-    padding: 12px;
+    border-radius: 20px;
+    padding: 20px;
     display: grid;
     justify-items: center;
-    gap: 8px;
-    border: 1px solid $card-border;
-    box-shadow: 0 14px 44px $soft-shadow, inset 0 1px 0 $inner-glow;
+    gap: 16px;
+    border: 1px solid $color-border-glow;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba($color-primary-glow, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     cursor: pointer;
-    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba($color-secondary-glow, 0.05) 50%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba($color-primary-glow, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+      &::after {
+        opacity: 1;
+      }
+
+      .avatar {
+        transform: scale(1.05);
+        filter: saturate(1.2) brightness(1.1);
+      }
+    }
   }
 
   .avatar-wrap {
     width: 100%;
     display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
   }
 
   .avatar {
     width: 100%;
     height: auto;
-    border-radius: 12px;
+    border-radius: 16px;
     display: block;
-    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.5), 0 0 18px rgba($accent-1, 0.03);
-    transition: transform 0.5s ease, filter 0.5s ease;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5),
+      0 0 25px rgba($color-primary-glow, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     background-color: rgba(0, 0, 0, 0.04);
-    filter: saturate(0.8) contrast(0.95) brightness(0.92);
-  }
-
-  .avatar-card:hover .avatar {
-    transform: translateY(-4px) scale(1.02);
-    filter: saturate(0.7) contrast(0.9) brightness(0.9);
+    filter: saturate(0.9) contrast(1.05) brightness(0.95);
   }
 
   .avatar-meta {
     display: flex;
+    flex-direction: column;
     gap: 8px;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    width: 100%;
   }
 
   .avatar-badge {
-    font-size: 0.9rem;
-    color: $text-main;
-    background: rgba(0, 0, 0, 0.18);
-    padding: 6px 10px;
-    border-radius: 999px;
-    border: 1px solid rgba($accent-2, 0.05);
+    font-size: 0.85rem;
+    color: $color-text-secondary;
+    background: linear-gradient(
+      90deg,
+      rgba($color-primary-glow, 0.15) 0%,
+      rgba($color-metal-dark, 0.5) 100%
+    );
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba($color-primary-glow, 0.2);
     font-weight: 600;
+    text-align: center;
+    width: 100%;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(
+        90deg,
+        rgba($color-primary-glow, 0.25) 0%,
+        rgba($color-metal-dark, 0.6) 100%
+      );
+      border-color: rgba($color-primary-glow, 0.4);
+      transform: translateX(4px);
+    }
   }
 
   .right-col {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    z-index: 6;
+    gap: 20px;
   }
 
   .hero-panel {
     position: relative;
-    z-index: 6;
-    padding: 20px;
-    border-radius: 14px;
-    background: $card-bg;
-    backdrop-filter: blur(8px) saturate(0.9);
-    border: 1px solid $card-border;
-    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 $inner-glow;
+    padding: 30px;
+    border-radius: 18px;
+    background: linear-gradient(
+      135deg,
+      rgba($color-metal-dark, 0.7) 0%,
+      rgba($color-deep-night, 0.8) 100%
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba($color-primary-glow, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
   .name {
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    margin: 0 0 10px 0;
     font-weight: 900;
     letter-spacing: 1px;
-    line-height: 1;
-    display: inline-block;
-    /* 标题改为 暗紫 → 血玫 渐变 */
-    background: linear-gradient(90deg, $accent-1 0%, $accent-2 70%);
+    line-height: 1.1;
+    background: linear-gradient(
+      135deg,
+      $color-primary-glow 0%,
+      $color-secondary-glow 50%,
+      $color-primary-glow 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: transparent;
-    -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.22);
-    text-shadow: 0 10px 36px rgba(0, 0, 0, 0.65);
     position: relative;
-  }
+    text-shadow: 0 10px 30px rgba($color-primary-glow, 0.3);
 
-  .jp {
-    font-size: 0.95rem;
-    color: $accent-1;
-    margin-left: 8px;
-    font-weight: 400;
-  }
-
-  .subtitle {
-    margin: 6px 0 0;
-    font-size: 1.1rem;
-    color: $accent-1;
-    font-weight: 600;
-    line-height: 1.4;
-  }
-
-  .lead {
-    margin: 10px 0 0;
-    color: $text-main;
-    opacity: 0.96;
-    line-height: 1.7;
-    max-width: 72ch;
-  }
-}
-
-/* ========== 通用卡片（更暗、更锐利的边与血色提示） ========== */
-.card {
-  margin-top: 24px;
-  background: rgba(6, 6, 8, 0.5);
-  border-radius: 14px;
-  padding: 24px;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(6px);
-  color: $text-main;
-  border: 1px solid $card-border;
-  transition: transform 0.28s ease, box-shadow 0.28s ease;
-
-  &:hover {
-    transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.7);
-  }
-
-  h2 {
-    margin: 0 0 12px 0;
-    font-size: 1.3rem;
-    color: $accent-2;
-  }
-
-  .card-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-  }
-}
-
-/* personality 列表样式（暗紫细线） */
-.personality .traits li {
-  padding: 12px 0;
-  border-bottom: 1px dashed rgba($accent-1, 0.06);
-  font-size: 1rem;
-  color: rgba($text-main, 0.92);
-}
-
-/* overview 双栏布局（保持） */
-.overview .two-col {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-}
-
-.overview .text-block {
-  flex: 1 1 40%;
-  min-width: 240px;
-  line-height: 1.6;
-  color: rgba($text-main, 0.96);
-}
-
-/* special-section：加入音符漂浮和暗紫边框 */
-.special-section {
-  position: relative;
-  overflow: hidden;
-
-  .content {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    margin-top: 16px;
-  }
-
-  .img-area {
-    flex: 0 0 200px;
-
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.6), 0 0 12px rgba($accent-1, 0.02);
-      border: 1px solid rgba($accent-1, 0.03);
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 120px;
+      height: 3px;
+      background: linear-gradient(90deg, $color-primary-glow, transparent);
+      border-radius: 2px;
     }
   }
 
-  .text-block {
-    flex: 1;
-    line-height: 1.6;
-    color: rgba($text-main, 0.95);
+  .jp {
+    font-size: 1.1rem;
+    color: $color-secondary-glow;
+    margin-left: 12px;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  .subtitle {
+    margin: 15px 0 0;
+    font-size: 1.3rem;
+    color: $color-secondary-glow;
+    font-weight: 600;
+    line-height: 1.4;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .lead {
+    margin: 20px 0 0;
+    color: $color-text-secondary;
+    opacity: 0.96;
+    line-height: 1.8;
+    max-width: 72ch;
+    font-size: 1.05rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba($color-primary-glow, 0.1);
+  }
+
+  .tag {
+    font-size: 0.9rem;
+    color: $color-text-secondary;
+    background: rgba($color-primary-glow, 0.1);
+    padding: 6px 12px;
+    border-radius: 15px;
+    border: 1px solid rgba($color-primary-glow, 0.2);
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba($color-primary-glow, 0.2);
+      border-color: rgba($color-primary-glow, 0.4);
+      transform: translateY(-2px);
+    }
   }
 }
 
-/* ll-stories — 暗底 + 微血色分割线 */
+/* ========== 通用卡片样式 ========== */
+.card {
+  margin-top: 30px;
+  background: linear-gradient(
+    135deg,
+    rgba($color-metal-dark, 0.7) 0%,
+    rgba($color-deep-night, 0.8) 100%
+  );
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba($color-primary-glow, 0.1);
+  backdrop-filter: blur(10px);
+  color: $color-text-primary;
+  border: 1px solid rgba($color-primary-glow, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba($color-primary-glow, 0.03) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7),
+      0 0 50px rgba($color-primary-glow, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border-color: rgba($color-primary-glow, 0.2);
+
+    .card-head h2 {
+      &::after {
+        width: 100px;
+      }
+    }
+  }
+
+  .card-head {
+    margin-bottom: 28px;
+    position: relative;
+
+    h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: $color-secondary-glow;
+      font-weight: 700;
+      display: inline-block;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, $color-primary-glow, transparent);
+        border-radius: 2px;
+        transition: width 0.4s ease;
+      }
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: $color-secondary-glow;
+      font-weight: 600;
+    }
+  }
+}
+
+/* ========== 双栏布局 ========== */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.text-block {
+  line-height: 1.8;
+  color: $color-text-secondary;
+
+  p {
+    margin: 0 0 20px 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  strong {
+    color: $color-secondary-glow;
+    font-weight: 600;
+  }
+}
+
+/* ========== 象征物品区域 ========== */
+.special-section {
+  .item-section {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba($color-primary-glow, 0.1);
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+      margin-top: 20px;
+      align-items: start;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    .img-area {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba($color-primary-glow, 0.1);
+      border: 1px solid rgba($color-primary-glow, 0.1);
+      transition: all 0.4s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6),
+          0 0 40px rgba($color-primary-glow, 0.2);
+
+        img {
+          transform: scale(1.05);
+        }
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.6s ease;
+      }
+    }
+  }
+}
+
+/* ========== 剧情时间线 ========== */
+.timeline {
+  .tl-wrap {
+    position: relative;
+    padding: 30px 20px;
+  }
+
+  .vl {
+    position: absolute;
+    left: 30px;
+    top: 50px;
+    bottom: 50px;
+    width: 4px;
+    background: linear-gradient(
+      180deg,
+      $color-primary-glow 0%,
+      rgba($color-primary-glow, 0.3) 50%,
+      transparent 100%
+    );
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba($color-primary-glow, 0.3);
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .tl-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tl-item {
+    position: relative;
+    margin: 40px 0;
+    padding-left: 80px;
+
+    @media (max-width: 768px) {
+      padding-left: 0;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 26px;
+      top: 10px;
+      width: 12px;
+      height: 12px;
+      background: $color-secondary-glow;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba($color-secondary-glow, 0.5);
+      z-index: 2;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+
+  .tl-card {
+    background: linear-gradient(
+      135deg,
+      rgba($color-metal-dark, 0.8) 0%,
+      rgba($color-deep-night, 0.9) 100%
+    );
+    border-radius: 16px;
+    padding: 24px 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5),
+      0 0 25px rgba($color-primary-glow, 0.1);
+    border: 1px solid rgba($color-primary-glow, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: linear-gradient(
+        180deg,
+        $color-primary-glow,
+        $color-secondary-glow
+      );
+    }
+
+    &:hover {
+      transform: translateX(10px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba($color-primary-glow, 0.2);
+    }
+  }
+
+  .tl-title {
+    margin: 0 0 12px 0;
+    font-size: 1.3rem;
+    color: $color-secondary-glow;
+    font-weight: 700;
+  }
+
+  .tl-desc {
+    margin: 0;
+    color: $color-text-secondary;
+    line-height: 1.7;
+  }
+}
+
+/* ========== 共鸣链区域 ========== */
+.resonance-chain {
+  .chain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .chain-card {
+    background: linear-gradient(
+      135deg,
+      rgba($color-metal-dark, 0.8) 0%,
+      rgba($color-deep-night, 0.9) 100%
+    );
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba($color-primary-glow, 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5),
+      0 0 25px rgba($color-primary-glow, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba($color-primary-glow, 0.05) 0%,
+        transparent 50%,
+        rgba($color-secondary-glow, 0.05) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba($color-primary-glow, 0.2);
+      border-color: rgba($color-primary-glow, 0.3);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &.chain-1 {
+      border-top: 3px solid $color-primary-glow;
+    }
+    &.chain-2 {
+      border-top: 3px solid $color-secondary-glow;
+    }
+    &.chain-3 {
+      border-top: 3px solid $color-blood-shadow;
+    }
+    &.chain-4 {
+      border-top: 3px solid #ff9a3c;
+    }
+    &.chain-5 {
+      border-top: 3px solid #6a0572;
+    }
+    &.chain-6 {
+      border-top: 3px solid #00b4d8;
+    }
+  }
+
+  .chain-header {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .chain-number {
+    font-size: 0.9rem;
+    color: $color-secondary-glow;
+    background: rgba($color-primary-glow, 0.15);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+
+  .chain-title {
+    margin: 0;
+    font-size: 1.2rem;
+    color: $color-text-primary;
+    font-weight: 600;
+  }
+
+  .chain-content {
+    p {
+      margin: 0;
+      color: $color-text-secondary;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      white-space: pre-wrap;
+    }
+  }
+}
+
+/* ========== 故事纪事区域 ========== */
 .ll-stories {
   .card {
-    width: min(1200px, 100%);
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6),
-      inset 0 1px 0 rgba($accent-1, 0.02);
-    color: $text-main;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba($color-primary-glow, 0.05);
+    color: $color-text-primary;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     background: linear-gradient(
-      180deg,
-      rgba(8, 10, 12, 0.12),
-      rgba(8, 6, 10, 0.06)
+      135deg,
+      rgba($color-metal-dark, 0.8) 0%,
+      rgba($color-deep-night, 0.9) 100%
     );
+    border: 1px solid rgba($color-primary-glow, 0.1);
   }
 
   .card-head {
-    padding: 14px 16px;
-    border-bottom: 1px solid rgba($accent-2, 0.03);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    padding: 24px 30px;
+    border-bottom: 1px solid rgba($color-primary-glow, 0.1);
+    background: linear-gradient(
+      135deg,
+      rgba($color-primary-glow, 0.05) 0%,
+      transparent 100%
+    );
 
     .card-title {
-      font-size: 24px;
+      font-size: 1.8rem;
       font-weight: 700;
-      color: $accent-1;
-      letter-spacing: 0.6px;
+      color: $color-secondary-glow;
+      letter-spacing: 0.5px;
+      margin: 0;
     }
   }
 
   .card-body {
-    padding: 18px 16px;
-    min-height: 160px;
+    padding: 30px;
+    min-height: 400px;
     position: relative;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(8, 8, 10, 0.02));
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba($color-deep-night, 0.3) 100%
+    );
   }
 
   .story {
-    color: rgba($text-main, 0.96);
+    color: $color-text-primary;
 
     .story-head {
-      font-size: 18px;
-      color: $accent-2;
+      font-size: 1.5rem;
+      color: $color-secondary-glow;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba($color-primary-glow, 0.1);
     }
 
     .story-content {
-      line-height: 1.7;
-      color: rgba($text-main, 0.92);
+      line-height: 1.8;
+      color: $color-text-secondary;
+      font-size: 1.05rem;
+
       white-space: pre-wrap;
     }
   }
@@ -1214,44 +1705,70 @@ $inner-glow: rgba(184, 107, 224, 0.03);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    padding: 10px 14px;
-    border-top: 1px solid rgba($accent-1, 0.02);
+    gap: 20px;
+    padding: 20px 30px;
+    border-top: 1px solid rgba($color-primary-glow, 0.1);
     background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.02),
-      rgba(0, 0, 0, 0.04)
+      135deg,
+      transparent 0%,
+      rgba($color-metal-dark, 0.5) 100%
     );
 
     .nav-btn {
-      background: transparent;
-      border: 1px solid rgba($accent-1, 0.06);
-      color: $accent-2;
-      padding: 6px 10px;
-      border-radius: 6px;
+      background: linear-gradient(
+        135deg,
+        rgba($color-primary-glow, 0.1) 0%,
+        rgba($color-metal-dark, 0.5) 100%
+      );
+      border: 1px solid rgba($color-primary-glow, 0.2);
+      color: $color-secondary-glow;
+      padding: 12px 24px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: background 180ms ease;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+      font-weight: 600;
+      min-width: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       &:hover {
-        background: rgba($accent-2, 0.04);
+        background: linear-gradient(
+          135deg,
+          rgba($color-primary-glow, 0.2) 0%,
+          rgba($color-metal-dark, 0.6) 100%
+        );
+        border-color: rgba($color-primary-glow, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba($color-primary-glow, 0.2);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
 
     .pager {
-      color: rgba($text-main, 0.72);
-      font-size: 13px;
+      color: $color-text-secondary;
+      font-size: 1rem;
       font-weight: 600;
+      background: rgba($color-primary-glow, 0.1);
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba($color-primary-glow, 0.2);
     }
   }
 
-  /* 切换动画保留，但更暗 */
+  /* 切换动画 */
   .fade-slide-enter-active,
   .fade-slide-leave-active {
-    transition: all 320ms cubic-bezier(0.2, 0.9, 0.2, 1);
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .fade-slide-enter-from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(20px);
   }
 
   .fade-slide-enter-to {
@@ -1266,220 +1783,152 @@ $inner-glow: rgba(184, 107, 224, 0.03);
 
   .fade-slide-leave-to {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-20px);
   }
 }
 
-/* timeline（暗紫竖线 + 微光） */
-.timeline {
-  position: relative;
+/* ========== 浮动元素 ========== */
+.floating-elements {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
 
-  .tl-wrap {
-    position: relative;
-    padding: 24px 12px 12px 96px;
-  }
-
-  .vl {
+  .floating-element {
     position: absolute;
-    left: 80px;
-    top: 32px;
-    bottom: 20px;
-    width: 4px;
-    border-radius: 6px;
-    background: linear-gradient(
-      180deg,
-      rgba($accent-2, 0.12),
-      rgba($accent-1, 0.1)
-    );
-    box-shadow: 0 6px 18px rgba($accent-1, 0.06),
-      inset 0 0 10px rgba($accent-1, 0.02);
-    opacity: 0.95;
-  }
+    font-size: 24px;
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba($color-primary-glow, 0.3));
 
-  .tl-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .tl-item {
-    position: relative;
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-    margin: 20px 0;
-    transition: transform 0.28s ease, box-shadow 0.28s ease;
-  }
-
-  .tl-card {
-    background: rgba(8, 6, 10, 0.36);
-    border-radius: 12px;
-    padding: 16px 20px;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
-    width: calc(100% - 130px);
-    border-left: 4px solid transparent;
-    transition: transform 0.28s ease, box-shadow 0.28s ease,
-      border-color 0.28s ease;
-    position: relative;
-    z-index: 2;
-  }
-
-  .tl-item:hover .tl-card,
-  .tl-item:focus-within .tl-card {
-    transform: translateY(-8px);
-    box-shadow: 0 24px 72px rgba(0, 0, 0, 0.6);
-    border-left-color: rgba($accent-2, 0.18);
-  }
-
-  .tl-title {
-    margin: 0 0 6px 0;
-    font-size: 1.1rem;
-    color: $accent-1;
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-  }
-
-  .tl-desc {
-    margin: 0;
-    color: rgba($text-main, 0.92);
-    white-space: pre-wrap;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 }
 
-/* 浮动音符（可在模板中渲染若干 .floating-note） */
-.floating-note {
-  position: absolute;
-  font-size: 14px;
-  color: $accent-2;
-  opacity: 0.95;
-  transform-origin: center;
-  animation: note-float 4.6s ease-in-out infinite;
-  filter: drop-shadow(0 6px 18px rgba($accent-2, 0.06));
-}
-
-/* 动画关键帧 */
-@keyframes staff-drift {
-  0% {
-    transform: translateY(-4%);
-    opacity: 0.9;
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
   }
   50% {
-    transform: translateY(6%);
-    opacity: 0.95;
-  }
-  100% {
-    transform: translateY(-4%);
-    opacity: 0.9;
+    transform: translateY(-30px) rotate(10deg);
   }
 }
 
-@keyframes note-float {
-  0% {
-    transform: translateY(0) rotate(-6deg) scale(0.95);
-    opacity: 0.85;
-  }
-  50% {
-    transform: translateY(-12px) rotate(3deg) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(0) rotate(-6deg) scale(0.95);
-    opacity: 0.85;
+/* ========== 响应式设计 ========== */
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
   }
 }
 
-/* 响应式：小屏适配（保留原逻辑，仅小幅调整文字色调与阴影） */
-@media (max-width: 980px) {
+@media (max-width: 768px) {
+  .augusta-page {
+    padding: 15px;
+    padding-top: 40px;
+  }
+
   .hero {
     grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 8px;
+    gap: 24px;
+    padding: 16px;
+    margin-bottom: 30px;
   }
 
   .avatar-card {
-    width: 140px;
-    padding: 8px;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
   }
 
   .hero-panel {
-    padding: 14px;
+    padding: 24px;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .card {
+    padding: 24px;
+    border-radius: 16px;
+    margin-top: 24px;
+  }
+
+  .card-head h2 {
+    font-size: 1.5rem;
+  }
+
+  .timeline {
+    .tl-wrap {
+      padding: 20px 0;
+    }
+
+    .tl-item {
+      margin: 30px 0;
+      padding-left: 0;
+    }
+
+    .tl-card {
+      padding: 20px;
+    }
+  }
+
+  .resonance-chain .chain-grid {
+    gap: 20px;
+  }
+
+  .ll-stories {
+    .card-head {
+      padding: 20px;
+    }
+
+    .card-body {
+      padding: 24px;
+      min-height: 300px;
+    }
+
+    .card-foot {
+      padding: 16px 20px;
+    }
+
+    .nav-btn {
+      padding: 10px 20px;
+      min-width: 50px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-panel {
+    padding: 20px;
   }
 
   .name {
     font-size: 1.8rem;
   }
 
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .lead {
-    font-size: 0.95rem;
-  }
-
   .card {
-    padding: 18px;
-    border-radius: 12px;
+    padding: 20px;
   }
 
-  .overview .two-col {
-    flex-direction: column;
+  .two-col {
+    gap: 24px;
   }
 
-  .special-section .content {
-    flex-direction: column;
-  }
-
-  .ll-stories {
-    .card {
-      border-radius: 10px;
-    }
-
-    .card-head {
-      padding: 12px 12px;
-    }
-
-    .card-body {
-      padding: 14px 12px;
-      min-height: 180px;
-    }
-
-    .card-foot {
-      padding: 8px 12px;
-    }
-  }
-
-  .timeline {
-    overflow: visible;
-  }
-
-  .timeline .tl-wrap {
-    padding-left: 14px !important;
-    padding-right: 14px;
-    min-height: 0;
-  }
-
-  .timeline .vl {
-    display: none !important;
-  }
-
-  .timeline .tl-list {
-    overflow: visible;
-  }
-
-  .timeline .tl-item {
-    display: block !important;
-    margin: 14px 0 !important;
-    width: 100%;
-  }
-
-  .timeline .tl-card {
-    width: 100% !important;
-    padding: 14px !important;
-    border-left: 0 !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-    transform: none !important;
+  .special-section .item-section .content {
+    gap: 24px;
   }
 }
 </style>

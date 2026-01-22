@@ -35,6 +35,10 @@ const router = createRouter({
       component: () => import("@/views/voiceView/index.vue"),
     },
     {
+      path: "/wiki",
+      component: () => import("@/views/wikiView/index.vue"),
+    },
+    {
       path: "/music",
       component: () => import("@/views/musicView/index.vue"),
     },

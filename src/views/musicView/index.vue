@@ -564,8 +564,7 @@ onMounted(async () => {
   // 设置 videoSrc 与 class：桌面优先横屏(mp1), 移动优先竖屏(mp2)
   const isM = isMobile.value;
   const folder = isM ? "/mp1" : "/mp2";
-  // 随机选择 1..4，如果没有资源请保证路径存在
-  // const idx = Math.floor(Math.random() * 4) + 1;
+
   videoSrc.value = `${folder}/1 (1).mp4`;
   videoClass.value = isM ? "landscape" : "portrait";
 
@@ -599,8 +598,8 @@ function globalKeydown(e: KeyboardEvent) {
 $bg-dark: #090608;
 $bg-deep: #2a1208;
 
-$accent-1:#C64830; // 主色（紫）
-$accent-2:#E1D7BD; // 副色（青蓝）
+$accent-1:#c64830; // 主色（紫）
+$accent-2:#ffd460; // 副色（青蓝）
 $blood: #ff6b85;
 $text: #fff7ef;
 $glass: rgba(95, 224, 255, 0.04);
