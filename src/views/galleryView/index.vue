@@ -122,7 +122,11 @@
           :key="img.id"
           class="card"
           @click="openLightbox(getDisplayedIndex(img.id, index))"
-          :class="{ 'liked-card': img.liked }"
+          :class="{
+            'liked-card': img.liked,
+            visible: img.liked,
+            loaded: img.liked,
+          }"
         >
           <div class="card-inner">
             <!-- 卡片边框效果 -->
