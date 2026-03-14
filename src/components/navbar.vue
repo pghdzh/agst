@@ -102,7 +102,7 @@
             </RouterLink>
             <!-- 外部链接：霜落映界 -->
             <a
-              href="http://36.150.237.25/#/redirector"
+              href="https://slty.site/#/redirector"
               target="_blank"
               rel="noopener"
               class="dropdown-item external"
@@ -143,7 +143,7 @@
             {{ item.name }}
           </RouterLink>
           <a
-            href="http://36.150.237.25/#/redirector"
+            href="https://slty.site/#/redirector"
             target="_blank"
             rel="noopener"
             class="mobile-nav-link external"
@@ -194,7 +194,7 @@ const dropdownOpen = ref(false);
 const onlineCount = ref<number | null>(null);
 
 const siteId = "agst";
-const socket: any = io("http://36.150.237.25:3000", { query: { siteId } });
+const socket: any = io(import.meta.env.VITE_API_BASE_URL, { query: { siteId } });
 
 // 方法
 function toggleMobileNav() {
@@ -212,7 +212,7 @@ function closeAllNavs() {
 const bgmPlaying = ref(false);
 const volume = ref(70); // 默认音量70%
 
-const bgmPath = "http://36.150.237.25:3000/music/葬我以日光.mp3";
+const bgmPath = import.meta.env.VITE_API_BASE_URL+"/music/葬我以日光.mp3";
 const bgmAudio = ref<HTMLAudioElement | null>(null);
 
 // BGM控制方法
